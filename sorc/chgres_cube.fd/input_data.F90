@@ -2458,7 +2458,7 @@
 
  use wgrib2api
  
- use grib2_util, only                   : rh2spfh, convert_omega
+ use grib2_util, only                   : rh2spfh, rh2spfh_gfs,convert_omega
 
  implicit none
 
@@ -2743,7 +2743,8 @@
       endif
       
       if (n==1 .and. .not. hasspfh) then 
-        call rh2spfh(dummy2d,rlevs(vlev),dummy3d(:,:,vlev))
+        !call rh2spfh(dummy2d,rlevs(vlev),dummy3d(:,:,vlev))
+        call rh2spfh_gfs(dummy2d,rlevs(vlev),dummy3d(:,:,vlev))
       endif
 
        print*,'tracer ',vlev, maxval(dummy2d),minval(dummy2d)
